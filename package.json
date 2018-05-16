@@ -1,9 +1,22 @@
 {
   "name": "react-native-quikkly",
+  "description": "React Native plugin for the Quikkly iOS and Android SDKs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quikkly/react-native.git"
+  },
   "version": "3.4.3",
   "private": true,
-  "homepage": "https://",
-  "keywords": [],
+  "homepage": "https://developers.quikkly.io/home/wrappersframeworks/",
+  "keywords": [
+  	"react",
+    "react-native",
+    "quikkly",
+    "scanning",
+    "native"
+  ],
+  "author": "Janek Priimann",
+  "license": "Apache-2.0",
   "main": "Quikkly.js",
   "nativePackage": true,
   "peerDependencies": {
