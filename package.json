@@ -1,0 +1,12 @@
+{
+  "name": "react-native-quikkly",
+  "version": "3.4.3",
+  "private": true,
+  "homepage": "https://",
+  "keywords": [],
+  "main": "Quikkly.js",
+  "nativePackage": true,
+  "peerDependencies": {
+    "react-native": "^0.55.3"
+  }
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'example'
+
+include ':app'
+include ':quikkly-react-native'
+
+project(':quikkly-react-native').projectDir = new File(rootProject.projectDir, '../../android')

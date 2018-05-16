@@ -1,0 +1,13 @@
+require 'json'
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+package = JSON.parse(File.read(File.join(__dir__, '../../package.json')))
+version = package['version']
+
+target 'example' do
+    use_frameworks!
+
+    pod 'Quikkly', :git => 'https://github.com/quikkly/ios-sdk.git', :tag => "#{version}"
+end
