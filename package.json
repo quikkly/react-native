@@ -6,7 +6,6 @@
     "url": "https://github.com/quikkly/react-native.git"
   },
   "version": "3.4.3",
-  "private": true,
   "homepage": "https://developers.quikkly.io/home/wrappersframeworks/",
   "keywords": [
   	"react",
