@@ -1,6 +1,6 @@
 {
     "name": "QuikklyReactNative",
-    "version": "3.4.3",
+    "version": "3.4.5",
     "homepage": "https://quikklycodes.com/",
     "license": {
         "type": "Commercial",
@@ -16,7 +16,7 @@
     "swift_version": "4.1",
     "source": {
         "git": "https://github.com/quikkly/react-native.git",
-        "tag": "3.4.3"
+        "tag": "3.4.5"
     },
     "source_files": [
     	"*.{h,m}"
@@ -24,6 +24,6 @@
     "requires_arc": true,
     "dependencies": {
     	"React": "~> 0.13.0-rc",
-    	"Quikkly": "3.4.3"
+    	"Quikkly": "3.4.5"
     }
 }
