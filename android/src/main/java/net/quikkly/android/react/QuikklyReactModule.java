@@ -37,6 +37,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     private static final String KEY_MASK_COLOR = "maskColor";
     private static final String KEY_OVERLAY_COLOR = "overlayColor";
     private static final String KEY_IMAGE_FILE = "imageFile";
+    private static final String TEMPLATE_DEFAULT = "template0001style1";
 
     private static String getString(@NonNull ReadableMap options, @NonNull String key) {
         try {
@@ -77,6 +78,10 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
 
         if(value == null) {
             throw new IllegalArgumentException("'value' must be a number");
+        }
+        
+        if(template == null) {
+            template = TEMPLATE_DEFAULT;
         }
 
         try {
