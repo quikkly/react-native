@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class QuikklyReactModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
