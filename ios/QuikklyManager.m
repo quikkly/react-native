@@ -32,6 +32,10 @@ static NSString *QuikklyGetStringOption(NSDictionary *options, NSString *key) {
 
 RCT_EXPORT_MODULE();
 
++ (BOOL)requiresMainQueueSetup {
+    return NO;
+}
+
 - (NSDictionary *)constantsToExport {
     return @{ @"VERSION": [NSString stringWithUTF8String:QC_VERSION_STR] };
 }
