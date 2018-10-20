@@ -52,7 +52,10 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         super(reactContext);
 
         reactContext.addActivityEventListener(this);
-        Quikkly.configureInstance(reactContext, 2, 30);
+        
+        if(!Quikkly.isConfigured()) {
+        	Quikkly.configureInstance(reactContext, 2, 30);
+        }
     }
 
     @Override
