@@ -105,7 +105,7 @@ import { Quikkly } from "react-native-quikkly"
 console.log(Quikkly.VERSION)
 
 // Create a SVG image
-let svgImage = Quikkly.createImage({
+Quikkly.createImage({
     value: 1234, /* required */
     template: "template0001style1", /* optional */
     skin: { /* optional */
@@ -116,6 +116,8 @@ let svgImage = Quikkly.createImage({
         overlayColor: "#ffffff",
         imageFile: "path/to/local/file.png"
     }
+}).then((result) => {
+	console.log(result)
 })
 
 // Show scan UI
