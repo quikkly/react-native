@@ -39,7 +39,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     private static final String KEY_MASK_COLOR = "maskColor";
     private static final String KEY_OVERLAY_COLOR = "overlayColor";
     private static final String KEY_IMAGE_FILE = "imageFile";
-    private static final String KEY_VERSION = "version";
+    private static final String KEY_VERSION = "VERSION";
     private static final String TEMPLATE_DEFAULT = "template0001style1";
 
     private static String getString(@NonNull ReadableMap options, @NonNull String key) {
