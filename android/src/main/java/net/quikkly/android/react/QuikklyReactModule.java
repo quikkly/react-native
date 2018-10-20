@@ -75,7 +75,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     }
     
     @ReactMethod
-    public String createImage(ReadableMap options) {
+    public void createImage(ReadableMap options, Promise promise) {
         String value = (options.getType(KEY_VALUE) == ReadableType.Number) ?
                 BigDecimal.valueOf(options.getDouble(KEY_VALUE)).toBigInteger().toString() : options.getString(KEY_VALUE);
         String template = getString(options, KEY_TEMPLATE);
@@ -136,8 +136,13 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         } catch(NoSuchKeyException e) {
             // Do nothing
         }
-
-        return Quikkly.getInstance().generateSvg(template, new BigInteger(value), skinBuilder.build());
+        
+        try {
+            promise.resolve(Quikkly.getInstance().generateSvg(template, new BigInteger(value), skinBuilder.build()));
+        } catch(Exception e) {
+        	e.printStackTrace();
+        	promise.reject("QuikklyUnknown", e.getMessage());
+        }
     }
 
     @ReactMethod

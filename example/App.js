@@ -19,7 +19,9 @@ const instructions = Platform.select({
   android: "Double tap R on your keyboard to reload,\nShake or press menu button for dev menu"
 })
 
-let svgImage = Quikkly.createImage({ value: 1234 })
+Quikkly.createImage({ value: 1234 }).then((result) => {
+	// Do something with the image
+})
 
 export default class App extends Component {
   constructor(props) {

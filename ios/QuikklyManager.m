@@ -36,11 +36,14 @@ RCT_EXPORT_MODULE();
     return @{ @"VERSION": [NSString stringWithUTF8String:QC_VERSION_STR] };
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(createImage:(NSDictionary *)options) {
+RCT_EXPORT_METHOD(createImage:(NSDictionary *)options
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
     NSObject *value = [options objectForKey:QUIKKLY_KEY_VALUE];
     NSObject *template = [options objectForKey:QUIKKLY_KEY_TEMPLATE];
     NSDictionary *skinOptions = [options objectForKey:QUIKKLY_KEY_SKIN];
     QKScannableSkin *skin = [[QKScannableSkin alloc] init];
+    NSString *result;
     
     QuikklyInitialize();
     
@@ -101,9 +104,17 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(createImage:(NSDictionary *)options) {
         }
     }
     
-    return [[QKScannable alloc] initWithValue:((NSNumber *)value).unsignedLongLongValue
-                                     template:(NSString *)template
-                                         skin:skin].svgString;
+    result = [[QKScannable alloc] initWithValue:((NSNumber *)value).unsignedLongLongValue
+                                       template:(NSString *)template
+                                           skin:skin].svgString;
+    
+    if(result) {
+        resolve(result);
+    } else {
+        reject(@"QuikklyUnknown",
+               @"Unable to get svg string",
+               [NSError errorWithDomain:QuikklyManagerErrorDomain code:-1 userInfo:nil]);
+    }
 }
 
 RCT_EXPORT_METHOD(scanForResult:(NSDictionary *)options
