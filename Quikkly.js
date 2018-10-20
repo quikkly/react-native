@@ -4,7 +4,7 @@ const QuikklyManager = NativeModules.QuikklyManager
 
 export class Quikkly {
   static get VERSION() {
-    return QuikklyManager.sdkVersion()
+    return QuikklyManager.VERSION
   }
 
   static scanForResult(options = {}) {

@@ -37,6 +37,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     private static final String KEY_MASK_COLOR = "maskColor";
     private static final String KEY_OVERLAY_COLOR = "overlayColor";
     private static final String KEY_IMAGE_FILE = "imageFile";
+    private static final String KEY_VERSION = "version";
     private static final String TEMPLATE_DEFAULT = "template0001style1";
 
     private static String getString(@NonNull ReadableMap options, @NonNull String key) {
@@ -63,12 +64,16 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     public String getName() {
         return NAME;
     }
-
-    @ReactMethod
-    public String sdkVersion() {
-        return Quikkly.versionString();
+    
+    @Override
+    public Map<String, Object> getConstants() {
+        Map<String, Object> constants = new HashMap<>();
+        
+        constants.put(KEY_VERSION, Quikkly.versionString());
+        
+        return constants;
     }
-
+    
     @ReactMethod
     public String createImage(ReadableMap options) {
         String value = (options.getType(KEY_VALUE) == ReadableType.Number) ?

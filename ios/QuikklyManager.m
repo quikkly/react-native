@@ -32,8 +32,8 @@ static NSString *QuikklyGetStringOption(NSDictionary *options, NSString *key) {
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(sdkVersion) {
-    return [NSString stringWithUTF8String:QC_VERSION_STR];
+- (NSDictionary *)constantsToExport {
+    return @{ @"VERSION": [NSString stringWithUTF8String:QC_VERSION_STR] };
 }
 
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(createImage:(NSDictionary *)options) {
