@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810579F222CB965800B3C5CA /* QuikklyScanViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 810579F122CB965800B3C5CA /* QuikklyScanViewManager.m */; };
 		81347C9120436852006C2105 /* QuikklyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81347C8F20436852006C2105 /* QuikklyManager.m */; };
 		8154D0C720AB6A91000FEEC5 /* QuikklyScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8154D0C620AB6A91000FEEC5 /* QuikklyScanViewController.m */; };
 		819EA3DA20AC88CD007E075C /* Quikkly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819EA3D920AC88CD007E075C /* Quikkly.framework */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		810579F022CB965800B3C5CA /* QuikklyScanViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuikklyScanViewManager.h; sourceTree = "<group>"; };
+		810579F122CB965800B3C5CA /* QuikklyScanViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuikklyScanViewManager.m; sourceTree = "<group>"; };
 		81347C7D20436735006C2105 /* libRNQuikkly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNQuikkly.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		81347C8F20436852006C2105 /* QuikklyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuikklyManager.m; sourceTree = "<group>"; };
 		81347C9020436852006C2105 /* QuikklyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuikklyManager.h; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 			children = (
 				81347C9020436852006C2105 /* QuikklyManager.h */,
 				81347C8F20436852006C2105 /* QuikklyManager.m */,
+				810579F022CB965800B3C5CA /* QuikklyScanViewManager.h */,
+				810579F122CB965800B3C5CA /* QuikklyScanViewManager.m */,
 				8154D0C520AB6A91000FEEC5 /* QuikklyScanViewController.h */,
 				8154D0C620AB6A91000FEEC5 /* QuikklyScanViewController.m */,
 			);
@@ -140,6 +145,7 @@
 			files = (
 				8154D0C720AB6A91000FEEC5 /* QuikklyScanViewController.m in Sources */,
 				81347C9120436852006C2105 /* QuikklyManager.m in Sources */,
+				810579F222CB965800B3C5CA /* QuikklyScanViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

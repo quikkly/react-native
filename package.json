@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/quikkly/react-native.git"
   },
-  "version": "3.4.13",
+  "version": "3.4.14",
   "homepage": "https://developers.quikkly.io/home/wrappersframeworks/",
   "keywords": [
   	"react",
@@ -19,6 +19,7 @@
   "main": "Quikkly.js",
   "nativePackage": true,
   "peerDependencies": {
+    "react": "*",
     "react-native": "^0.57.0"
   }
 }
