@@ -99,7 +99,7 @@ protected List<ReactPackage> getPackages() {
 ## Usage
 
 ```javascript
-import { Quikkly } from "react-native-quikkly"
+import { Quikkly, QuikklyView } from "react-native-quikkly"
 
 // Print SDK version
 console.log(Quikkly.VERSION)

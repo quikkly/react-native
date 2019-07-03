@@ -17,6 +17,8 @@ export class Quikkly {
   }
 }
 
+const QuikklyScanView = requireNativeComponent("QuikklyScanView", QuikklyView)
+
 export class QuikklyView extends Component {
   _onScanCode = (event) => {
     if(this.props.onScanCode) {
@@ -26,7 +28,7 @@ export class QuikklyView extends Component {
   
   render() {
     return (
-      <QuikklyScanViewManager
+      <QuikklyScanView
         {...this.props}
         onScanCode={this._onScanCode}
       />
@@ -34,7 +36,7 @@ export class QuikklyView extends Component {
   }
 }
 
-const QuikklyScanViewManager = requireNativeComponent("QuikklyScanView", QuikklyView)
+const QuikklyScanView = requireNativeComponent("QuikklyScanView", QuikklyView)
 
 export const QuikklyError = {
   NO_CONTEXT: "QuikklyNoContext",
