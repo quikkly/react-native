@@ -1,5 +1,7 @@
 package net.quikkly.android.react;
 
+import android.support.annotation.NonNull;
+
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class QuikklyReactPackage implements ReactPackage {
 
+    @NonNull
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
@@ -26,8 +29,13 @@ public class QuikklyReactPackage implements ReactPackage {
         return Collections.emptyList();
     }
 
+    @NonNull
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List<ViewManager> managers = new ArrayList<>();
+
+        managers.add(new QuikklyScanViewManager());
+
+        return managers;
     }
 }
