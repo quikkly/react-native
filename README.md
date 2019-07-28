@@ -67,7 +67,7 @@ Update build.gradle files
 
 ```groovy
 // Add an additional maven repository
-maven { url "http://developers.quikkly.io/nexus/repository/maven-releases/" }
+maven { url 'https://quikkly.bintray.com/quikkly-android-sdk' }
 
 // Add project dependency
 implementation project(":quikkly-react-native")

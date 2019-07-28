@@ -17,7 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "http://developers.quikkly.io/nexus/repository/maven-releases/" }
+        maven { url 'https://quikkly.bintray.com/quikkly-android-sdk' }
         maven { url "$rootDir/../node_modules/react-native/android" }
     }
 }
