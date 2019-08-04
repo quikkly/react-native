@@ -10,9 +10,10 @@ import {
   StyleSheet,
   Button,
   Text,
-  View
+  View,
+  Image
 } from "react-native"
-import { Quikkly } from "react-native-quikkly"
+import { Quikkly, QuikklyView } from "react-native-quikkly"
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\nCmd+D or shake for dev menu",
@@ -40,26 +41,43 @@ export default class App extends Component {
     })
   }
 
+  onScanCodeOverlay = (result) => {
+    console.log(result);
+    this.setState({ code: result.value})
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
+      <View style={{flex: 1}}>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>
           Welcome to Quikkly SDK {Quikkly.VERSION} Demo!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, tap the button or edit App.js
-        </Text>
-        <Text style={styles.instructions}>
+          </Text>
+          <Text style={styles.instructions}>
+          Tap the "Scan a code" button to open the full screen scanner
+          or use the overlay scanner below to scan a tag
+          </Text>
+          <Text style={styles.instructions}>
           {instructions}
-        </Text>
-        <Button
-          style={styles.action}
-          onPress={this.onScanCode}
-          title="Scan a code"
-        />
-        <Text style={styles.instructions}>
+          </Text>
+          <Button
+            style={styles.action}
+            onPress={this.onScanCode}
+            title="Scan a code" />
+          <Text style={styles.instructions}>
           The last scanned code was: {this.state.code}
-        </Text>
+          </Text>
+        </View>
+        <View style={{flex:1, alignItems: 'center'}}>
+          <QuikklyView 
+            style={{width: '100%', height: '100%'}} 
+            onScanCode={this.onScanCodeOverlay} 
+            cameraPreviewFit={2}/>
+          <Image 
+            style={{width: '100%', height: '100%', position: 'absolute'}}
+            source={require('./images/mask2.png')}
+          />
+        </View>
       </View>
     );
   }
@@ -67,8 +85,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
@@ -84,5 +101,8 @@ const styles = StyleSheet.create({
   },
   action: {
     color: "#330066"
+  },
+  overlay: {
+    position: 'absolute'
   }
 })
