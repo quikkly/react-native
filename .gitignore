@@ -12,3 +12,11 @@ xcuserdata
 
 # Android Studio
 local.properties
+android/.project
+android/.classpath
+android/.settings/org.eclipse.buildship.core.prefs
+example/android/.project
+example/android/.settings/org.eclipse.buildship.core.prefs
+example/android/app/.classpath
+example/android/app/.project
+example/android/app/.settings/org.eclipse.buildship.core.prefs
