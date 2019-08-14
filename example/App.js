@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from "react"
+import {createStackNavigator, createAppContainer} from 'react-navigation'
 import {
   Platform,
   StyleSheet,
@@ -15,15 +16,81 @@ import {
 } from "react-native"
 import { Quikkly, QuikklyView } from "react-native-quikkly"
 
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+  render() {
+    const {navigate} = this.props.navigation;
+    return (
+      <View>
+        <Button
+          title="Go to Overlay Scanner"
+          onPress={() => navigate('Overlay', {name: 'overlay'})}
+        />
+        <Text style={{textAlign: 'center',color: '#333333',marginBottom: 5,}}>
+        When I click the "Go to Overlay Scanner" for the second
+        time I see the error message.
+        </Text>
+      </View>
+);
+  }
+}
+
+class OverlayScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Overlay',
+  };
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      code: "<none>"
+    }
+  }
+
+  onScanCodeOverlay = (result) => {
+    console.log(result);
+    this.setState({ code: result.value})
+  }
+
+  render() {
+    const {navigate} = this.props.navigation;
+    return (
+      <View style={{flex: 1}}>
+        <Button
+          title="Go back home"
+          onPress={() => navigate('Home', {name: 'home'})}
+        />
+          <Text style={{textAlign: 'center',color: '#333333',marginBottom: 5,}}>
+          The last scanned code was: {this.state.code}
+          </Text>
+        <View style={{flex:1, alignItems: 'center'}}>
+          <QuikklyView 
+            style={{width: '100%', height: '100%'}} 
+            onScanCode={this.onScanCodeOverlay} 
+            cameraPreviewFit={2}/>
+          <Image 
+            style={{width: '100%', height: '100%', position: 'absolute'}}
+            source={require('./images/mask2.png')}
+          />
+        </View>
+      </View>
+    );
+  }
+}
+
+const MainNavigator = createStackNavigator({
+  Home: {screen: HomeScreen},
+  Overlay: {screen: OverlayScreen},
+});
+
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\nCmd+D or shake for dev menu",
   android: "Double tap R on your keyboard to reload,\nShake or press menu button for dev menu"
 })
-
-Quikkly.createImage({ value: 1234 }).then((result) => {
-	// Do something with the image
-})
-
+/*
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -106,3 +173,8 @@ const styles = StyleSheet.create({
     position: 'absolute'
   }
 })
+*/
+
+const App = createAppContainer(MainNavigator);
+export default App;
+

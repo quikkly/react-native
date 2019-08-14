@@ -10,4 +10,6 @@ target 'example' do
     use_frameworks!
 
     pod 'Quikkly', :git => 'https://github.com/quikkly/ios-sdk.git', :tag => "#{version}"
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
 end
