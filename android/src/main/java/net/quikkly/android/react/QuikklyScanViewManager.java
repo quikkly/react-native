@@ -1,5 +1,7 @@
 package net.quikkly.android.react;
 
+import android.util.Log;
+
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -11,7 +13,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class QuikklyScanViewManager extends SimpleViewManager<QuikklyScanView> {
-
+    private static final String TAG = "QuikklyScanViewManager";
     private static final String REACT_CLASS = "QuikklyScanView";
 
     @Nonnull
@@ -34,6 +36,12 @@ public class QuikklyScanViewManager extends SimpleViewManager<QuikklyScanView> {
     @Override
     protected QuikklyScanView createViewInstance(@Nonnull ThemedReactContext context) {
         return new QuikklyScanView(context);
+    }
+
+    @Override
+    public void onDropViewInstance(QuikklyScanView view) {
+        super.onDropViewInstance(view);
+        view.cleanupView();
     }
 
     @ReactProp(name = "cameraPreviewFit")

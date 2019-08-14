@@ -9,10 +9,12 @@
   "dependencies": {
     "react": "16.5.0",
     "react-native": "0.57.2",
-    "react-native-quikkly": "file:../"
+    "react-native-gesture-handler": "^1.3.0",
+    "react-native-quikkly": "file:../",
+    "react-navigation": "^3.11.1"
   },
   "devDependencies": {
-  	"@babel/core": "7.1.2",
+    "@babel/core": "7.1.2",
     "babel-jest": "22.4.3",
     "metro-react-native-babel-preset": "0.45.0",
     "jest": "22.4.3",
