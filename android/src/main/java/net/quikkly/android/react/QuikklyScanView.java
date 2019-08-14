@@ -1,5 +1,7 @@
 package net.quikkly.android.react;
 
+import android.app.Activity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +19,6 @@ public class QuikklyScanView extends RelativeLayout {
 
     private ThemedReactContext context;
 
-    //private static RelativeLayout wrapper;
-
     public QuikklyScanView(ThemedReactContext context) {
         super(context);
         this.context = context;
@@ -27,18 +27,6 @@ public class QuikklyScanView extends RelativeLayout {
         addView(wrapper);
     }
 
-    /*
-    private synchronized RelativeLayout getRelativeLayout() {
-        if(wrapper == null) {
-            wrapper = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.quikkly_scan_view, this, false);
-        }
-        else {
-            ((ViewGroup) wrapper.getParent()).removeView(wrapper);
-        }
-        wrapper.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        return wrapper;
-    }
-    */
     public void setCameraPreviewFit(Integer cameraPreviewFit) {
         this.cameraPreviewFit = cameraPreviewFit;
         configureFragment();
@@ -46,9 +34,14 @@ public class QuikklyScanView extends RelativeLayout {
 
     public void cleanupView() {
         try {
-            QuikklyScanFragment scanFragment =
-                (QuikklyScanFragment) this.context.getCurrentActivity().getFragmentManager().findFragmentByTag("quikkly_scan_fragment");
-            this.context.getCurrentActivity().getFragmentManager().beginTransaction().remove(scanFragment).commit();
+            QuikklyScanFragment scanFragment = getQuikklyScanFragment();
+            Activity activity = this.context.getCurrentActivity();
+            if (activity != null && scanFragment != null) {
+                activity.getFragmentManager()
+                        .beginTransaction()
+                            .remove(scanFragment)
+                        .commit();
+            }
         }
         catch(Exception e) {
             Log.e(TAG, e.getMessage());
@@ -57,14 +50,23 @@ public class QuikklyScanView extends RelativeLayout {
 
     private void configureFragment() {
         try {
-            QuikklyScanFragment scanFragment =
-                    (QuikklyScanFragment) this.context.getCurrentActivity().getFragmentManager().findFragmentByTag("quikkly_scan_fragment");
-            if(cameraPreviewFit != null) {
-                scanFragment.setCameraPreviewFit(1);
+            QuikklyScanFragment scanFragment = getQuikklyScanFragment();
+            if(scanFragment != null && cameraPreviewFit != null) {
+                scanFragment.setCameraPreviewFit(cameraPreviewFit);
             }
         }
         catch(Exception e) {
             Log.w(TAG,"Unable to configure fragment");
         }
+    }
+
+    private QuikklyScanFragment getQuikklyScanFragment() {
+        Activity activity = this.context.getCurrentActivity();
+        if(activity != null) {
+            return (QuikklyScanFragment) activity
+                    .getFragmentManager()
+                    .findFragmentByTag("quikkly_react_scan_fragment");
+        }
+        return null;
     }
 }
