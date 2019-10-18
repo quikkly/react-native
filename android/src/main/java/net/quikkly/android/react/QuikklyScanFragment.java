@@ -1,7 +1,6 @@
 package net.quikkly.android.react;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.ViewParent;
 
@@ -23,7 +22,7 @@ public class QuikklyScanFragment extends ScanFragment implements ScanResultListe
     }
 
     @Override
-    public void onScanResult(@Nullable ScanResult scanResult) {
+    public void onScanResult(ScanResult scanResult) {
         if(scanResult != null && scanResult.tags != null && scanResult.tags.length > 0) {
             QuikklyScanView view = getScanView();
             Context context = (view != null) ? view.getContext() : null;

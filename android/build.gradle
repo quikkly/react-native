@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.4.2"
+        classpath 'com.android.tools.build:gradle:3.5.1'
     }
 }
 
@@ -43,7 +43,7 @@ android {
 repositories {
     google()
     jcenter()
-    maven { url 'https://quikkly.bintray.com/quikkly-android-sdk' }
+    maven { url 'https://quikklysdks.bintray.com/quikkly-android-sdk' }
     maven { url "$rootDir/../node_modules/react-native/android" }
 }
 

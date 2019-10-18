@@ -3,7 +3,6 @@ package net.quikkly.android.react;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
@@ -42,7 +41,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     private static final String KEY_VERSION = "VERSION";
     private static final String TEMPLATE_DEFAULT = "template0001style1";
 
-    private static String getString(@NonNull ReadableMap options, @NonNull String key) {
+    private static String getString(ReadableMap options, String key) {
         try {
             return options.getString(key);
         } catch(NoSuchKeyException e) {
@@ -168,8 +167,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         }
     }
 
-    @Override
-    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == SCAN_ACTIVITY_REQUEST_CODE) {
             if(pendingPromise != null) {
                 try {
@@ -198,7 +196,10 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         }
     }
 
-    @Override
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+        onActivityResult(requestCode, resultCode, data);
+    }
+
     public void onNewIntent(Intent intent) {
     }
 }

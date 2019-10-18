@@ -1,15 +1,11 @@
 package net.quikkly.android.react;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.annotations.ReactProp;
 
 public class QuikklyScanView extends RelativeLayout {
 
@@ -35,7 +31,7 @@ public class QuikklyScanView extends RelativeLayout {
     public void cleanupView() {
         try {
             QuikklyScanFragment scanFragment = getQuikklyScanFragment();
-            Activity activity = this.context.getCurrentActivity();
+            Activity activity = context.getCurrentActivity();
             if (activity != null && scanFragment != null) {
                 activity.getFragmentManager()
                         .beginTransaction()
@@ -61,7 +57,7 @@ public class QuikklyScanView extends RelativeLayout {
     }
 
     private QuikklyScanFragment getQuikklyScanFragment() {
-        Activity activity = this.context.getCurrentActivity();
+        Activity activity = context.getCurrentActivity();
         if(activity != null) {
             return (QuikklyScanFragment) activity
                     .getFragmentManager()
