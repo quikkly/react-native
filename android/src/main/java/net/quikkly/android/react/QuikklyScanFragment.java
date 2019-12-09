@@ -1,7 +1,6 @@
 package net.quikkly.android.react;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.ViewParent;
 
@@ -13,6 +12,8 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 import net.quikkly.android.ScanResultListener;
 import net.quikkly.android.ui.ScanFragment;
 import net.quikkly.core.ScanResult;
+
+import androidx.annotation.Nullable;
 
 public class QuikklyScanFragment extends ScanFragment implements ScanResultListener {
 

@@ -1,15 +1,11 @@
 package net.quikkly.android.react;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.annotations.ReactProp;
 
 public class QuikklyScanView extends RelativeLayout {
 

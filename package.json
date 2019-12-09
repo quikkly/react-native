@@ -20,6 +20,6 @@
   "nativePackage": true,
   "peerDependencies": {
     "react": "*",
-    "react-native": "^0.57.0"
+    "react-native": "^0.61.0"
   }
 }
