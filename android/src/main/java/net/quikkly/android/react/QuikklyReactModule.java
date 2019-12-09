@@ -25,6 +25,8 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+
 public class QuikklyReactModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
     private static final int SCAN_ACTIVITY_REQUEST_CODE = 46372;

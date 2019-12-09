@@ -13,6 +13,8 @@ import net.quikkly.android.ScanResultListener;
 import net.quikkly.android.ui.ScanFragment;
 import net.quikkly.core.ScanResult;
 
+import androidx.annotation.Nullable;
+
 public class QuikklyScanFragment extends ScanFragment implements ScanResultListener {
 
     private static final String TAG = QuikklyScanFragment.class.getSimpleName();
