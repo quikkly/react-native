@@ -1,11 +1,11 @@
 {
-  "name": "@quikkly/react-native-quikkly",
+  "name": "react-native-quikkly",
   "description": "React Native plugin for the Quikkly iOS and Android SDKs",
   "repository": {
     "type": "git",
     "url": "https://github.com/quikkly/react-native.git"
   },
-  "version": "3.4.16",
+  "version": "3.4.17",
   "homepage": "https://developers.quikkly.io/home/wrappersframeworks/",
   "keywords": [
   	"react",

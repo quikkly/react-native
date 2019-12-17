@@ -22,3 +22,11 @@ example/android/app/.project
 example/android/app/.settings/org.eclipse.buildship.core.prefs
 
 .vscode
+
+Pods
+
+.idea
+
+**/*/Podfile.lock
+**/*/package-lock.json
+**/*/yarn.lock
