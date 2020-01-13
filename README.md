@@ -114,3 +114,7 @@ export default class App extends Component<Props> {
   }
 }
 ```
+## example
+There is an example shipped with the SDK, please refer to [Example](https://github.com/quikkly/react-native/tree/master/example).
+
+This example demostrates an overlay scanner with a mask image.
