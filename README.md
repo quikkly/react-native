@@ -6,7 +6,7 @@ A React Native plugin for the Quikkly iOS and Android SDKs.
 
 ## How do I get set up
 
-### React Native
+### React Native (0.61.5)
 
 Add Quikkly as an additional dependency and generate native android and/or iOS projects.
 Quikkly won't work with [Expo](https://expo.io/) toolchain. See [example](example) how the structure should look like.
@@ -21,27 +21,19 @@ npm install react-native-quikkly --save
 
 # b) yarn
 yarn add react-native-quikkly
-
-# (Mostly) automatic installation
-react-native link react-native-quikkly
 ```
+N.B. react-native-quikkly supports automatic linking introduced in
+react-native 0.60 so we dont need to manually link
 
 ### iOS
+```bash
+cd ios
 
-Create a Podfile and run it (```pod install```)
+# optionally refresh podspecs
+pod repo update
 
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-
-package = JSON.parse(File.read(File.join(__dir__, '../node_modules/react-native-quikkly/package.json')))
-version = package['version']
-
-target 'example' do
-    use_frameworks!
-
-    pod 'Quikkly', :git => 'https://github.com/quikkly/ios-sdk.git', :tag => "#{version}"
-end
+# update pods i.e. pull the Quikkly framework
+pod install
 ```
 
 Add NSCameraUsageDescription to your Info.plist and/or InfoPlist.strings
@@ -51,17 +43,9 @@ Add NSCameraUsageDescription to your Info.plist and/or InfoPlist.strings
 <string>The camera is required for scanning codes</string>
 ```
 
-Set "Always Embed Swift Standard Libraries to Yes" under project settings. Ensure that "Quikkly.xcodeproj" is under Libraries and libRNQuikkly.a is linked.
+Set "Always Embed Swift Standard Libraries to Yes" under project settings. 
 
 ### Android
-
-Update settings.gradle file. ```react-native link``` will do this automatically.
-
-```groovy
-include ':quikkly-react-native'
-
-project(':quikkly-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-quikkly/android')
-```
 
 Update build.gradle files
 
@@ -69,8 +53,6 @@ Update build.gradle files
 // Add an additional maven repository
 maven { url 'https://quikklysdks.bintray.com/quikkly-android-sdk' }
 
-// Add project dependency
-implementation project(":quikkly-react-native")
 ```
 
 Update AndroidManifest.xml
@@ -83,17 +65,6 @@ Update AndroidManifest.xml
 
 <!-- <application> -->
 <activity android:name="net.quikkly.android.react.QuikklyScanActivity" />
-```
-
-Update MainApplication.java. ```react-native link``` will do this automatically.
-
-```java
-protected List<ReactPackage> getPackages() {
-    return Arrays.<ReactPackage>asList(
-        new MainReactPackage(),
-        new QuikklyReactPackage()
-    );
-}
 ```
 
 ## Usage
