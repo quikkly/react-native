@@ -11,6 +11,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
@@ -18,14 +19,10 @@ import com.facebook.react.bridge.WritableMap;
 import net.quikkly.android.Quikkly;
 import net.quikkly.core.SkinBuilder;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
-
-import androidx.annotation.NonNull;
 
 public class QuikklyReactModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
@@ -51,15 +48,37 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         }
     }
 
+    private static String[] getStrings(ReadableMap options, String key) {
+        if(options.hasKey(key)) {
+            // if a string is passed in then return an array
+            // with a single value
+            if(options.getType(key) == ReadableType.String) {
+                return new String[] {options.getString(key)};
+            }
+            // if its an array then return a new string array
+            else if(options.getType(key) == ReadableType.Array){
+                ReadableArray array = options.getArray(key);
+                if (array != null) {
+                    String[] ret = new String[array.size()];
+                    for (int i = 0; i < array.size(); i++) {
+                        ret[i] = array.getString(i);
+                    }
+                    return ret;
+                }
+            }
+        }
+        return null;
+    }
+
     private Promise pendingPromise;
 
     public QuikklyReactModule(ReactApplicationContext reactContext) {
         super(reactContext);
 
         reactContext.addActivityEventListener(this);
-        
+
         if(!Quikkly.isConfigured()) {
-        	Quikkly.configureInstance(reactContext, 2, 30);
+            Quikkly.configureInstance(reactContext, 2, 30);
         }
     }
 
@@ -67,16 +86,16 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
     public String getName() {
         return NAME;
     }
-    
+
     @Override
     public Map<String, Object> getConstants() {
         Map<String, Object> constants = new HashMap<>();
-        
+
         constants.put(KEY_VERSION, Quikkly.versionString());
-        
+
         return constants;
     }
-    
+
     @ReactMethod
     public void createImage(ReadableMap options, Promise promise) {
         String value = (options.getType(KEY_VALUE) == ReadableType.Number) ?
@@ -87,7 +106,7 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
         if(value == null) {
             throw new IllegalArgumentException("'value' must be a number");
         }
-        
+
         if(template == null) {
             template = TEMPLATE_DEFAULT;
         }
@@ -96,55 +115,51 @@ public class QuikklyReactModule extends ReactContextBaseJavaModule implements Ac
             ReadableMap skinOptions = options.getMap(KEY_SKIN);
 
             if(skinOptions != null) {
-                String parameter = getString(options, KEY_BACKGROUND_COLOR);
+                String parameter = getString(skinOptions, KEY_BACKGROUND_COLOR);
 
                 if(parameter != null) {
                     skinBuilder.setBackgroundColor(parameter);
                 }
 
-                parameter = getString(options, KEY_BORDER_COLOR);
+                parameter = getString(skinOptions, KEY_BORDER_COLOR);
 
                 if(parameter != null) {
                     skinBuilder.setBorderColor(parameter);
                 }
 
-                parameter = getString(options, KEY_DATA_COLOR);
+                String[] parameters = getStrings(skinOptions, KEY_DATA_COLOR);
 
-                if(parameter != null) {
-                    skinBuilder.setDataColors(new String[] { parameter });
+                if(parameters != null) {
+                    skinBuilder.setDataColors(parameters);
                 }
 
-                parameter = getString(options, KEY_MASK_COLOR);
+                parameter = getString(skinOptions, KEY_MASK_COLOR);
 
                 if(parameter != null) {
                     skinBuilder.setMaskColor(parameter);
                 }
 
-                parameter = getString(options, KEY_OVERLAY_COLOR);
+                parameter = getString(skinOptions, KEY_OVERLAY_COLOR);
 
                 if(parameter != null) {
                     skinBuilder.setOverlayColor(parameter);
                 }
 
-                parameter = getString(options, KEY_IMAGE_FILE);
+                parameter = getString(skinOptions, KEY_IMAGE_FILE);
 
                 if(parameter != null) {
-                    try {
-                        skinBuilder.setImage(new File(parameter));
-                    } catch (IOException e) {
-                        throw new IllegalArgumentException("Unable to read file at " + parameter, e);
-                    }
+                    skinBuilder.setImageUrl(parameter);
                 }
             }
         } catch(NoSuchKeyException e) {
             // Do nothing
         }
-        
+
         try {
             promise.resolve(Quikkly.getInstance().generateSvg(template, new BigInteger(value), skinBuilder.build()));
         } catch(Exception e) {
-        	e.printStackTrace();
-        	promise.reject("QuikklyUnknown", e.getMessage());
+            e.printStackTrace();
+            promise.reject("QuikklyUnknown", e.getMessage());
         }
     }
 

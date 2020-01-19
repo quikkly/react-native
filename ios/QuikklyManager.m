@@ -28,6 +28,14 @@ static NSString *QuikklyGetStringOption(NSDictionary *options, NSString *key) {
     return ([value isKindOfClass:[NSString class]]) ? (NSString *)value : nil;
 }
 
+static  NSArray<NSString *>* QuikklyGetStringsOption(NSDictionary *options, NSString *key) {
+    NSObject *value = [options objectForKey:key];
+    if([value isKindOfClass:[NSString class]]) {
+        return @[(NSString *) value];
+    }
+    return ([value isKindOfClass:[NSArray class]]) ? (NSArray *)value : nil;
+}
+
 @implementation QuikklyManager
 
 RCT_EXPORT_MODULE();
@@ -87,10 +95,10 @@ RCT_EXPORT_METHOD(createImage:(NSDictionary *)options
             skin.borderColor = parameter;
         }
         
-        parameter = QuikklyGetStringOption(skinOptions, QUIKKLY_KEY_DATA_COLOR);
+        NSArray<NSString *> *parameters = QuikklyGetStringsOption(skinOptions, QUIKKLY_KEY_DATA_COLOR);
         
-        if(parameter) {
-            skin.dataColors = @[ parameter ];
+        if(parameters) {
+            skin.dataColors = parameters;
         }
         
         parameter = QuikklyGetStringOption(skinOptions, QUIKKLY_KEY_MASK_COLOR);
