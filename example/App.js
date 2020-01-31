@@ -21,6 +21,27 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome',
   };
+
+  onCreateCode = () => {
+    console.log("creating code");
+    Quikkly.createImage({
+      value: 1234, /* required */
+      template: "template0001style1", /* optional */
+      skin: { /* optional */
+          backgroundColor: "#ffffff",
+          borderColor: "#333333",
+          maskColor: "#ffffff",
+          dataColor: ["#67ac5c"],
+          overlayColor: "#333333",
+          imageFile: "https://www.medicalnewstoday.com/content/images/articles/327/327448/maine-coon-cat.jpg"
+      }
+    }).then((result) => {
+      console.log(result)
+    },(error) => {
+      console.log(error)
+    })
+  }
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -28,6 +49,10 @@ class HomeScreen extends React.Component {
         <Button
           title="Go to Overlay Scanner"
           onPress={() => navigate('Overlay', {name: 'overlay'})}
+        />
+        <Button
+          title="Create Image"
+          onPress={() => this.onCreateCode()}
         />
         <Text style={{textAlign: 'center',color: '#333333',marginBottom: 5,}}>
         Click to see an example of the overlay scanner.
