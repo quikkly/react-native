@@ -11,7 +11,6 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 import net.quikkly.android.ScanResultListener;
 import net.quikkly.android.ui.ScanFragment;
-import net.quikkly.core.IntUtils;
 import net.quikkly.core.ScanResult;
 
 public class QuikklyScanFragment extends ScanFragment implements ScanResultListener {
@@ -31,7 +30,7 @@ public class QuikklyScanFragment extends ScanFragment implements ScanResultListe
             if (context instanceof ReactContext) {
                 ReactContext reactContext = (ReactContext) context;
                 WritableMap event = Arguments.createMap();
-                String value = IntUtils.unsignedLongAsBigInteger(scanResult.tags[0].dataLong).toString();
+                String value = scanResult.tags[0].getData().toString();
                 event.putString("value", value);
 
                 reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(view.getId(), "scanCode", event);
