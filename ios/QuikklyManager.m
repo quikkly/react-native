@@ -18,7 +18,7 @@ static void QuikklyInitialize() {
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        QKQuikkly.apiKey = @"unused";
+        QKQuikklyApi.apiKey = @"unused";
     });
 }
 

@@ -1,6 +1,6 @@
 {
     "name": "QuikklyReactNative",
-    "version": "3.4.5",
+    "version": "3.4.20",
     "homepage": "https://quikklycodes.com/",
     "license": {
         "type": "Commercial",
@@ -11,12 +11,12 @@
     },
     "summary": "The Quikkly Smart Scannable SDK for React Native",
     "platforms": {
-        "ios": "8.0"
+        "ios": "13.0"
     },
-    "swift_version": "4.1",
+    "swift_version": "5.0",
     "source": {
         "git": "https://github.com/quikkly/react-native.git",
-        "tag": "3.4.5"
+        "tag": "3.4.20"
     },
     "source_files": [
     	"*.{h,m}"
@@ -24,6 +24,6 @@
     "requires_arc": true,
     "dependencies": {
     	"React": "~> 0.13.0-rc",
-    	"Quikkly": "3.4.5"
+    	"Quikkly": "3.4.20"
     }
 }

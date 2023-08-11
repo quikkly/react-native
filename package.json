@@ -5,21 +5,24 @@
     "type": "git",
     "url": "https://github.com/quikkly/react-native.git"
   },
-  "version": "3.4.18",
+  "version": "3.4.20",
   "homepage": "https://developers.quikkly.io/home/wrappersframeworks/",
   "keywords": [
-  	"react",
+    "react",
     "react-native",
     "quikkly",
     "scanning",
     "native"
   ],
-  "author": "Janek Priimann",
+  "author": "Rob Byrne",
   "license": "Apache-2.0",
   "main": "Quikkly.js",
   "nativePackage": true,
   "peerDependencies": {
-    "react": "*",
-    "react-native": "^0.61.0"
+    "react": "18.2.0",
+    "react-native": "0.72.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15"
   }
 }

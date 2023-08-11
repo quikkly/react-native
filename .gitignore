@@ -30,3 +30,4 @@ Pods
 **/*/Podfile.lock
 **/*/package-lock.json
 **/*/yarn.lock
+**/*/Gemfile.lock

@@ -314,7 +314,7 @@
 					"$(PROJECT_DIR)/../../../ios/**",
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../ios/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../../ios/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,7 +335,7 @@
 					"$(PROJECT_DIR)/../../../ios/**",
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../ios/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../../ios/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

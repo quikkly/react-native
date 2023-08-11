@@ -13,11 +13,12 @@ export class Quikkly {
   }
 
   static createImage(options = {}) {
+    console.log(typeof QuikklyScanView);
     return QuikklyManager.createImage(options)
   }
 }
 
-const QuikklyScanView = requireNativeComponent("QuikklyScanView", QuikklyView)
+const QuikklyScanView = requireNativeComponent("QuikklyScanView")
 
 export class QuikklyView extends Component {
   _onScanCode = (event) => {

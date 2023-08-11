@@ -6,7 +6,7 @@ A React Native plugin for the Quikkly iOS and Android SDKs.
 
 ## How do I get set up
 
-### React Native (0.61.5)
+### React Native (0.72.3)
 
 Add Quikkly as an additional dependency and generate native android and/or iOS projects.
 Quikkly won't work with [Expo](https://expo.io/) toolchain. See [example](example) how the structure should look like.
@@ -14,7 +14,7 @@ Quikkly won't work with [Expo](https://expo.io/) toolchain. See [example](exampl
 ```bash
 # create a new project
 react-native init example
-cd example
+cd sample
 
 # a) npm
 npm install react-native-quikkly --save
@@ -51,7 +51,7 @@ Update build.gradle files
 
 ```groovy
 // Add an additional maven repository
-maven { url 'https://quikklysdks.bintray.com/quikkly-android-sdk' }
+maven { url 'https://maven.pkg.github.com/quikkly/quikkly-android-sdk' }
 
 ```
 
@@ -115,6 +115,6 @@ export default class App extends Component<Props> {
 }
 ```
 ## example
-There is an example shipped with the SDK, please refer to [Example](https://github.com/quikkly/react-native/tree/master/example).
+There is an example shipped with the SDK, please refer to [Example](https://github.com/quikkly/react-native/tree/master/sample).
 
 This example demostrates an overlay scanner with a mask image.
