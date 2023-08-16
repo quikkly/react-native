@@ -43,7 +43,12 @@ android {
 repositories {
     google()
     jcenter()
-    maven { url 'https://maven.pkg.github.com/quikkly/quikkly-android-sdk' }
+    maven { url 'https://maven.pkg.github.com/quikkly/quikkly-android-sdk' 
+        credentials {
+                    username = githubUser
+                    password = githubPackagesToken
+                }
+    }
     maven { url "$rootDir/../node_modules/react-native/android" }
 }
 
