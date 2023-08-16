@@ -45,9 +45,9 @@ repositories {
     jcenter()
     maven { url 'https://maven.pkg.github.com/quikkly/quikkly-android-sdk' 
         credentials {
-                    username = githubUser
-                    password = githubPackagesToken
-                }
+            username = githubUser
+            password = githubPackagesToken
+        }
     }
     maven { url "$rootDir/../node_modules/react-native/android" }
 }
@@ -62,6 +62,7 @@ dependencies {
     implementation "com.android.support:design:$supportLibVersion"
     implementation "com.android.support:support-v13:$supportLibVersion"
     implementation "com.android.support:support-vector-drawable:$supportLibVersion"
+    implementation "commons-io:commons-io:2.13.0"
     implementation "com.facebook.react:react-native:+"
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"

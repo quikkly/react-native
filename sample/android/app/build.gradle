@@ -103,6 +103,15 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://maven.pkg.github.com/quikkly/quikkly-android-sdk'
+        credentials {
+            username = githubUser
+            password = githubPackagesToken
+        }
+    }
+}
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
